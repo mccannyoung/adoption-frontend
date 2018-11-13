@@ -3,6 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  componentDidMount(){
+    fetch("https://localhost:5001/api/Families")
+    .then( response=> response.json())
+    .then(data=>this.setState({familyList: data}))
+  }
   render() {
     return (
       <div className="App">
