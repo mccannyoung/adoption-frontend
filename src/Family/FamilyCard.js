@@ -8,34 +8,56 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 // import Button from '@material-ui/core/Button'
 // import Typography from '@material-ui/core/Typography'
 import {styles} from '../styles'
-const FamilyCard = (props) => {
+import { renderComponent } from 'recompose';
+import FamilyDetails from './FamilyDetails';
+export class FamilyCard  extends React.Component {
+  
+  state = {
+    detailModalOpen : false
+  }
+  constructor (props)  {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+  }
+    
+   handleClick  = (e,data) =>{
+        console.log(data);
+        this.setState({detailModalOpen: true});
+    };
+    handleClose=(e,data) =>{
+      this.setState({detailModalOpen: false});
+    };
 
-  const cardStyle = {
+    render() {
+      return (
+        <div>
+        <Card style={cardStyle} id={this.props.family.id} onClick={this.handleClick}>
+          <CardContent>
+            <img src="images/WhiteFamily.png" alt="icon of family" />
+            <div style={styles.FamilyName}>The {this.props.family.familyName} Family</div> 
+            <div style={styles.FamilyStatement}>{this.props.family.personalStatement}</div>
+            <div style={styles.shareIcon}>
+              <ShareOutlinedIcon /> <FavoriteBorderIcon />
+            </div>
+          </CardContent>
+        </Card>
+
+            <FamilyDetails 
+              family= {this.props.family} 
+              open={this.state.detailModalOpen}
+              handleClose={this.handleClose}
+             />
+          </div>
+      );
+  };
+};
+
+const cardStyle = {
     display: 'block',
     maxWidth: 200,
     minHeight: 200,
     };
 
+export default FamilyCard
 
-    console.log(props);
-//    handleClick  = (e,data) =>{
- //       console.log(data);
- //       props.openModal(props.family.id);
- //   };
-
-    return (
-      <Card style={cardStyle} id={props.family.id} onClick={props.openModal}>
-        <CardContent>
-          <img src="images/WhiteFamily.png" alt="icon of family" />
-          <div style={styles.FamilyName}>The {props.family.familyName} Family</div> 
-          <div style={styles.FamilyStatement}>{props.family.personalStatement}</div>
-          <div style={styles.shareIcon}>
-            <ShareOutlinedIcon /> <FavoriteBorderIcon />
-          </div>
-        </CardContent>
-      </Card>
-    );
-};
-
-
-export default FamilyCard;
