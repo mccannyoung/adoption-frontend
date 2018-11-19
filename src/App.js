@@ -27,31 +27,11 @@ class App extends Component {
   render() {
       return (
         <div className="App">
-        Hello world
-        <NavBar />
-        <br />
-        <FamilyGrid
-          familyList={this.state.familyList}
-         />
-  {/*
-            <Grid 
-
-            // spacing={40}
-            // direction="column"
-            // justify="center"
-            // alignItems="center"
-            ></Grid> (
-            <Grid item>
-            grid item 1
-              {/* <NavBar /> */}
-            {/* </Grid>
-            <Grid item>
-            grid item 2
-              {/* <FamilyGrid  */}
-              {/* familyList={this.state.familyList}
-              /> */}
-            {/* </Grid>
-          </Grid> */} 
+          <NavBar />
+          <br />
+          <FamilyGrid
+            familyList={this.state.familyList}
+          />
         </div>
       );
   }

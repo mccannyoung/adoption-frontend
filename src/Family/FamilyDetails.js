@@ -46,7 +46,7 @@ export const FamilyDetails = (props) => {
             {   props.family.parents.length === 2 ?  
                 " us!" : " me!"
             } </h3>
-            <div id="geographicData">We live</div>
+            <div id="geographicData">We live {props.family.state}</div>
             {props.family.personalStatement}
             <h3>Demographics</h3>
             <h3>{   props.family.parents[0].gender === "M" ?  
@@ -59,7 +59,7 @@ export const FamilyDetails = (props) => {
                 props.family.parents[0].religion === props.family.parents[1].religion ?
                             props.family.parents[0].religion :
                              props.family.parents[0].religion+" and " +props.family.parents[1].religion
-            }
+            }<br />
             The {props.family.familyName} family is {props.family.financial}.
          </div>
       </Dialog>
